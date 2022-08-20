@@ -30,6 +30,6 @@ jobs:
             image: moinmomin/survey
             tags: latest
             registry: docker.io
-            dockerfile: Dockerfile
+            dockerfile: survey/Dockerfile
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}

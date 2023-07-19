@@ -27,6 +27,7 @@ jobs:
         with:
           context: .
           push: true
+          image: moinmomin/survey
           tags:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -42,6 +43,6 @@ jobs:
         run: |
           minikube start --vm-driver=docker
           minikube kubectl -- get pods -A
-          minikube kubectl -- create deployment my-app --image=your-docker-registry/your-image-name:${{ github.sha }}
+          minikube kubectl -- create deployment my-app --image=moinmomin/survey:latest
           minikube kubectl -- expose deployment my-app --type=LoadBalancer --port=8080
           minikube kubectl -- get services

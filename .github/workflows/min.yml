@@ -2,7 +2,9 @@ name: CI/CD for Spring Boot on Minikube
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
+
 jobs:
   build:
     name: Build and Push Docker Image
@@ -25,11 +27,10 @@ jobs:
         with:
           context: .
           push: true
-          image: moin2391/survey
-          tags:latest
+          tags: moin2391/survey
         env:
-            username: ${{ secrets.DOCKER_USERNAME }}
-            password: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy:
     name: Deploy to Minikube
@@ -41,6 +42,6 @@ jobs:
         run: |
           minikube start --vm-driver=docker
           minikube kubectl -- get pods -A
-          minikube kubectl -- create deployment my-app --image=moin2391/survey:latest
+          minikube kubectl -- create deployment my-app --image=moin2391/survey
           minikube kubectl -- expose deployment my-app --type=LoadBalancer --port=8080
           minikube kubectl -- get services

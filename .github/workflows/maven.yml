@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: project with cicd
+name: project with cicd moin
 
 on:
   push:
@@ -32,5 +32,14 @@ jobs:
             dockerfile: survey/Dockerfile
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
-  
+
+  deploy:
+   needs : build
+   runs-on : [aws-ec2]
+   steps :
+     - name : pull image from docker hub
+       run : docker pull moinmomin/ss
+     - name : delete old identation 
+       run : docker rm -f moin
+     - name : docker run -8080:8080 --name moin moinmomin/ss
   

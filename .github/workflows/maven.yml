@@ -33,12 +33,4 @@ jobs:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
   
-  deploy:
-   needs : build
-   runs-on : [aws-ec2]
-   steps :
-     - name : pull image from docker hub
-       run : docker pull moinmomin/ss
-     - name : delete old identation 
-       run : docker rm -f moin
-     - name : docker run -8080:8080 --name moin moinmomin/ss
+  

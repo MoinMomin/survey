@@ -35,8 +35,8 @@ jobs:
    runs-on : [momin]
    steps :
      - name : pull image from docker hub
-       run : docker pull moinmomin/ss
+       run : sudo docker pull moinmomin/ss
      - name : delete old identation 
-       run : docker rm -f moin
+       run : sudo docker rm -f moin
      - name : run container
        run : docker run -8080:8080 --name moin moinmomin/ss

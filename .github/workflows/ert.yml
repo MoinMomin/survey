@@ -39,4 +39,4 @@ jobs:
      - name : delete old identation 
        run : sudo docker rm -f moin
      - name : run container
-       run : sudo docker run -p 8080:8080 --name moin moinmomin/ss
+       run : sudo docker run -d -p 8080:8080 --name moin moinmomin/ss

@@ -38,4 +38,5 @@ jobs:
        run : docker pull moinmomin/ss
      - name : delete old identation 
        run : docker rm -f moin
-     - name : docker run -8080:8080 --name moin moinmomin/ss
+     - name : run container
+       run : docker run -8080:8080 --name moin moinmomin/ss

@@ -43,4 +43,9 @@ public class controller {
 		return surverepo.findByCriteria(age,gender);
 		
 	}
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello moin";
+		
+	}
 }
